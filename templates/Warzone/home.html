@@ -1,0 +1,174 @@
+{% extends './navbar.html' %}
+{% load static %}
+
+{% block title %}Work{% endblock %}
+
+{% block content %}
+<div class="bg-image">
+    <video controls autoplay muted loop>
+        <source src="{% static 'camera.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="text-overlay">
+        <h1>Connecting World Through Tech</h1>
+        <p>Your goto source for CCTV solutions</p><p>networking expertise & cutting-edge tech</p><p>Securing today,innovating tomorrow</p>
+        <button class="button">View our Products</button>
+        <button class="buttonn">Message US</button>
+    </div>
+    <div class="bottom-left-text">
+        <p>Itronz Netcurities</p>
+    </div>
+</div>
+
+    
+<div class="products-section" style="margin-top:50px">
+    <h2>Our Products</h2>
+    <div class="products-grid">
+        {% for product in products %}
+        <a href="{% url 'store:product_detail' product.id %}">
+        <div class="card">
+            <div class="image">
+                {% for image in product.images.all %}
+                    {% if image.is_feature %}
+                        
+                            <img src="{{ image.image.url }}" alt="{{ product.title }} Featured Image">
+                        
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <span class="title">{{ product.title }}</span>
+            <span class="price">RS {{ product.price }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="services-section">
+    <h2>Our Services</h2>
+    <div class="service-box">
+        <img src="{% static 'instal.jpg' %}" alt="Service Image" class="service-image">
+        <div class="service-text">
+            <h3>Services for CCTV Installment</h3>
+            <p>
+                Enhance your security with our professional CCTV services, tailored to your needs, ensuring a strong online presence.Enhance your security with our professional CCTV services, tailored to your needs, ensuring a strong online presence.
+            </p>
+            <button class="button">View our Services</button>
+        </div>
+    </div>
+    
+    <div class="service-cards">
+        <div class="cardd">
+            <img src="{% static 'inst.jpg' %}" alt="Maintenance Image" class="card-image">
+            <div class="overlay">
+                <h4>Installation</h4>
+            </div>
+        </div>
+        <div class="cardd">
+            <img src="{% static 'gin.jpg' %}" alt="Maintenance Image" class="card-image">
+            <div class="overlay">
+                <h4>Maintenance</h4>
+            </div>
+        </div>
+        <div class="cardd">
+            <img src="{% static 'moni.jpg' %}" alt="Maintenance Image" class="card-image">
+            <div class="overlay">
+                <h4>Support</h4>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+<div class="bg-image">
+    <video controls autoplay muted loop>
+        <source src="{% static 'camera1.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="text-overlay1">
+        <h1>"Safety through surveillance."
+            "Always watching, always protecting."</h1>
+            <p>asjhdjashfjahf jfsjahfj asjfhasjf jasnfjasnfjasnfjansjfnajsbf</p>
+            <button class="button">About us</button>
+</div>
+</div>
+<main class="completed-projects">
+    <div class="project-stats">
+        <div class="stat-item">
+            <h1>Projects Completed</h1>
+            <i class="fas fa-check-circle"></i>
+            <span>30+</span>
+        </div>
+        <div class="stat-item">
+            <h1>Years of Experience</h1>
+            <i class="fas fa-clock"></i>
+            <span>2yrs</span>
+        </div>
+        <div class="stat-item">
+            <h1>Team Members</h1>
+            <i class="fas fa-users"></i>
+            <span>15+</span>
+        </div>
+    </div>
+    <div class="work-section">
+        <h2>Our Projects</h2>
+        <div class="projects-grid">
+            {% for project in projects %}
+            <a href="{% url 'store:project_detail' project.id %}">
+            <div class="project-card">
+                <div class="image">
+                    {% for image in project.images.all %}
+                        {% if image.is_feature %}
+                            
+                                <img src="{{ image.image.url }}" alt="{{ project.title }} Featured Image">
+                            
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="overlay">
+                    <h3>{{ project.title }}</h3>
+                    
+                </div>
+            </div>
+            {% empty %}
+            <p>No projects available at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+    <h2>Projects completed</h2>
+    <div class="project-logos">
+        
+        <div class="company-logo">
+            <img src="{% static 'bb.png' %}" alt="Company 1">
+        </div>
+        <div class="company-logo">
+            <img src="{% static 'gand.png' %}" alt="Company 2">
+        </div>
+       
+    </div>
+    <button class="button">View our Work</button>
+</main>
+<div class="testimonial-section">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-container">
+        <div class="testimonial-card">
+            <img src="{% static 'gand.png' %}" alt="Client Logo" class="client-logo">
+            <p>"Itronz provided exceptional service and exceeded our expectations. Their dedication and attention to detail were remarkable."</p>
+            <h4>John Doe</h4>
+            <div class="client-title">CEO, TechCo</div>
+        </div>
+        <div class="testimonial-card">
+            <img src="{% static 'bb.png' %}" alt="Client Logo" class="client-logo">
+            <p>"The team at Itronz is professional, skilled, and highly dependable. We've seen a significant improvement in our operations thanks to their efforts."</p>
+            <h4>Jane Smith</h4>
+            <div class="client-title">Founder, WebSolutions</div>
+        </div>
+        <div class="testimonial-card">
+            <img src="{% static 'client_logo3.jpg' %}" alt="Client Logo" class="client-logo">
+            <p>"Itronz went above and beyond in delivering top-quality products. We highly recommend their services to anyone looking for reliable results."</p>
+            <h4>Michael Brown</h4>
+            <div class="client-title">Managing Director, Innovate Ltd.</div>
+        </div>
+    </div>
+</div>
+<h6>Itronz</h6>
+
+{% endblock %}
